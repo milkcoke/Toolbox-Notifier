@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+yarn install
+yarn run lint
+yarn run test
+
+git add package.json
+git add yarn.lock
+
