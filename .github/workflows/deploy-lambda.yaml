@@ -1,0 +1,38 @@
+name: AWS Lambda deploy
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout source code
+        uses: actions/checkout@v3
+
+      - name: Install Dependencies
+        run: yarn install
+
+      - name: Build
+        run: yarn build
+
+      - name: Move node_modules to dist
+        run: mv node_modules dist/node_modules
+
+      - name: Zip
+        run: (cd dist && zip -r ../function.zip .)
+
+      - name: AWS Lambda Deploy
+        uses: appleboy/lambda-action@v0.1.9
+        with:
+          function_name: mfalcon-test
+          runtime: nodejs18.x
+          memory_size: 256
+          timeout: 30
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_region: ${{ secrets.AWS_DEFAULT_REGION }}
+          zip_file: function.zip
+          handler: index.handler
+          role: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/service-role/${{ secrets.AWS_LAMBDA_ROLE_NAME }}
