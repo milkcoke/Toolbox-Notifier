@@ -2,7 +2,10 @@ name: AWS Lambda deploy
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
+      - develop
+      - 'feature/*'
 
 jobs:
   deploy:
