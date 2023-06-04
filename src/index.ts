@@ -1,10 +1,11 @@
 import {APIGatewayEvent, Context} from 'aws-lambda'
-import {SESClient, SendEmailCommand} from '@aws-sdk/client-ses'
+import {SESv2Client} from '@aws-sdk/client-sesv2'
 import {IGitHubHandler} from './service/github-handler.interface'
 import {DefaultGitHubHandler} from './service/github-handler'
 import gitconfig from '../config/gitconfig'
+import {AwsSendEmail} from './service/aws-send-email'
 
-const sesClient = new SESClient({region: 'ap-northeast-2'})
+const sesClient = new SESv2Client({region: 'ap-northeast-2'})
 const config = gitconfig()
 
 export async function handler (event: APIGatewayEvent, context: Context): Promise<any> {
@@ -15,21 +16,8 @@ export async function handler (event: APIGatewayEvent, context: Context): Promis
     const latestReleaseId = await githubHandler.getLatestReleaseID()
     const response = await githubHandler.getNumOfDownload(latestReleaseId)
 
-    const sendEmailCommand = new SendEmailCommand({
-      Destination: {
-        ToAddresses: [`${config.email}`]
-      },
-      Message: {
-        Body: {
-          Text: {Data: response}
-        },
-        Subject: {Data: 'Toolbox Dev new download event!'}
-      },
-      Source: 'Toolbox-Notifier@milkcoke'
-    })
-
-    const emailResponse = await sesClient.send(sendEmailCommand)
-    console.dir(emailResponse)
+    const awsSendEmail = new AwsSendEmail(sesClient)
+    await awsSendEmail.sendEmail(response)
 
     return {
       'statusCode': 200,
@@ -58,5 +46,4 @@ export async function handler (event: APIGatewayEvent, context: Context): Promis
       }
     }
   }
-
 }
