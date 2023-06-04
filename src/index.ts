@@ -8,37 +8,55 @@ const sesClient = new SESClient({region: 'ap-northeast-2'})
 const config = gitconfig()
 
 export async function handler (event: APIGatewayEvent, context: Context): Promise<any> {
-  if (event.httpMethod !== 'POST') throw new Error('Not valid headers')
-  console.dir(context)
+  try {
+    if (event.requestContext['http'].method !== 'POST') throw new Error('Not valid headers')
 
-  const msg = JSON.parse(event.body)
-  console.dir(msg)
+    const githubHandler: IGitHubHandler = new DefaultGitHubHandler(config.owner, config.repo)
+    const latestReleaseId = await githubHandler.getLatestReleaseID()
+    const response = await githubHandler.getNumOfDownload(latestReleaseId)
 
-  const githubHandler: IGitHubHandler = new DefaultGitHubHandler(config.owner, config.repo)
-  const latestReleaseId = await githubHandler.getLatestReleaseID()
-  const response = await githubHandler.getNumOfDownload(latestReleaseId)
-
-  const sendEmailCommand = new SendEmailCommand({
-    Destination: {
-      ToAddresses: [`${config.email}`]
-    },
-    Message: {
-      Body: {
-        Text: {Data: response}
+    const sendEmailCommand = new SendEmailCommand({
+      Destination: {
+        ToAddresses: [`${config.email}`]
       },
-      Subject: {Data: 'Toolbox Dev new download event!'}
-    },
-    Source: 'Toolbox-Notifier@milkcoke'
-  })
+      Message: {
+        Body: {
+          Text: {Data: response}
+        },
+        Subject: {Data: 'Toolbox Dev new download event!'}
+      },
+      Source: 'Toolbox-Notifier@milkcoke'
+    })
 
-  const emailResponse = await sesClient.send(sendEmailCommand)
-  console.dir(emailResponse)
+    const emailResponse = await sesClient.send(sendEmailCommand)
+    console.dir(emailResponse)
 
-  return {
-    'statusCode': 200,
-    'headers': {
-      'Content-Type': 'application/json'
-    },
-    'body': '{"message": "Thanks"}' // Response body as a JSON string
+    return {
+      'statusCode': 200,
+      'headers': {
+        'Content-Type': 'application/json'
+      },
+      'body': '{"message": "Thanks"}' // Response body as a JSON string
+    }
+  } catch (e: unknown) {
+    console.error(e)
+    if (e instanceof Error) {
+      return {
+        statusCode: 500,
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: {message: e.message}
+      }
+    } else {
+      return {
+        statusCode: 500,
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: {message: e}
+      }
+    }
   }
+
 }

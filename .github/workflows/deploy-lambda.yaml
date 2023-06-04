@@ -20,8 +20,8 @@ jobs:
       - name: Build
         run: yarn build
 
-      - name: Move node_modules to dist
-        run: mv node_modules dist/node_modules
+      - name: Move config to dist and node_modules to dist
+        run: (mv config/*.yaml dist/config && mv node_modules dist/node_modules)
 
       - name: Zip
         run: (cd dist && zip -r ../function.zip .)
@@ -29,7 +29,7 @@ jobs:
       - name: AWS Lambda Deploy
         uses: appleboy/lambda-action@v0.1.9
         with:
-          function_name: mfalcon-test
+          function_name: toolbox-notifier
           runtime: nodejs18.x
           memory_size: 256
           timeout: 30
@@ -37,5 +37,5 @@ jobs:
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws_region: ${{ secrets.AWS_DEFAULT_REGION }}
           zip_file: function.zip
-          handler: index.handler
+          handler: src/index.handler
           role: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/service-role/${{ secrets.AWS_LAMBDA_ROLE_NAME }}
