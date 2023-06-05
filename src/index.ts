@@ -1,22 +1,24 @@
-import {APIGatewayEvent, Context} from 'aws-lambda'
+import 'reflect-metadata'
+import {APIGatewayEvent} from 'aws-lambda'
 import {SESv2Client} from '@aws-sdk/client-sesv2'
-import {IGitHubHandler} from './service/github-handler.interface'
-import {DefaultGitHubHandler} from './service/github-handler'
-import gitconfig from '../config/gitconfig'
-import {AwsSendEmail} from './service/aws-send-email'
+import {container} from 'tsyringe'
+import {IGitHubHandler} from './service/event/github-handler.interface'
+import {DefaultGitHubHandler} from './service/event/github-handler'
+import AWSSESHandler from './service/email/aws-ses-handler'
+import Config from '../config/config'
 
+const config = container.resolve(Config)
 const sesClient = new SESv2Client({region: 'ap-northeast-2'})
-const config = gitconfig()
 
-export async function handler (event: APIGatewayEvent, context: Context): Promise<any> {
+export async function handler (event: APIGatewayEvent): Promise<any> {
   try {
     if (event.requestContext['http'].method !== 'POST') throw new Error('Not valid headers')
 
-    const githubHandler: IGitHubHandler = new DefaultGitHubHandler(config.owner, config.repo)
+    const githubHandler: IGitHubHandler = new DefaultGitHubHandler(config)
     const latestReleaseId = await githubHandler.getLatestReleaseID()
     const response = await githubHandler.getNumOfDownload(latestReleaseId)
 
-    const awsSendEmail = new AwsSendEmail(sesClient)
+    const awsSendEmail = new AWSSESHandler(sesClient, config)
     await awsSendEmail.sendEmail(response)
 
     return {

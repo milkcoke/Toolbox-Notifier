@@ -1,21 +1,23 @@
-import {IGitHubHandler} from './github-handler.interface'
 import {Octokit} from '@octokit/rest'
+import {autoInjectable} from 'tsyringe'
+import {IGitHubHandler} from './github-handler.interface'
+import Config from '../../../config/config'
 
+@autoInjectable()
 export class DefaultGitHubHandler implements IGitHubHandler {
-  private readonly _owner: string
-  private readonly _repositoryName: string
   private readonly _octokit = new Octokit()
-
-  constructor(owner: string, repositoryName: string) {
-    this._owner = owner
-    this._repositoryName = repositoryName
+  private readonly _owner: string
+  private readonly _repo: string
+  constructor(private readonly _config: Config) {
+    this._owner = this._config.owner
+    this._repo = this._config.repo
   }
 
   async getLatestReleaseID(): Promise<number> {
 
     const latestRelease = await this._octokit.rest.repos.getLatestRelease({
       owner: this._owner,
-      repo: this._repositoryName
+      repo: this._repo
     })
 
     return latestRelease.data.id
@@ -25,7 +27,7 @@ export class DefaultGitHubHandler implements IGitHubHandler {
 
     const response = await this._octokit.rest.repos.getRelease({
       owner: this._owner,
-      repo: this._repositoryName,
+      repo: this._repo,
       release_id: releaseId
     })
 

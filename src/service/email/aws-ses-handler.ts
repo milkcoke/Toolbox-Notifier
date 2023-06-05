@@ -1,12 +1,13 @@
 import {SESv2Client, SendEmailCommand} from '@aws-sdk/client-sesv2'
-import gitconfig from '../../config/gitconfig'
-import {SendEmailCommandOutput} from '@aws-sdk/client-ses'
-export class AwsSendEmail {
-  private readonly _sesv2Client: SESv2Client
-  private readonly _config = gitconfig()
+import Config from '../../../config/config'
 
-  constructor(sesv2Client: SESv2Client) {
+export default class AwsSesHandler {
+  private readonly _sesv2Client: SESv2Client
+  private readonly _config: Config
+
+  constructor(sesv2Client: SESv2Client, config: Config) {
     this._sesv2Client = sesv2Client
+    this._config = config
   }
 
   async sendEmail(message: any): Promise<any> {
