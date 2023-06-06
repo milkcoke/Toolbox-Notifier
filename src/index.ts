@@ -2,9 +2,9 @@ import 'reflect-metadata'
 import {APIGatewayEvent} from 'aws-lambda'
 import {SESv2Client} from '@aws-sdk/client-sesv2'
 import {container} from 'tsyringe'
-import {IGitHubHandler} from './service/event/github-handler.interface'
-import {DefaultGitHubHandler} from './service/event/github-handler'
-import AWSSESHandler from './service/email/aws-ses-handler'
+import {IGitHubHandler} from './repository/app/github-handler.interface'
+import {DefaultGitHubHandler} from './repository/app/github-handler'
+import AWSSESHandler from './repository/notify/aws-ses-handler'
 import Config from '../config/config'
 
 const config = container.resolve(Config)
