@@ -8,12 +8,17 @@ import {TAppReleaseInfo} from '../../types/app/appRelease'
 @singleton()
 @injectable()
 export class GithubAppRepository implements IAppRepository {
-  private readonly _octokit = new Octokit()
   private readonly _owner: string
   private readonly _repo: string
+  private readonly _githubId: string
+  private readonly _octokit: Octokit
   constructor(private readonly _config: Config) {
     this._owner = this._config.owner
     this._repo = this._config.repo
+    this._githubId = this._config['github-id']
+    this._octokit = new Octokit({
+      baseUrl: `https://api.github.com/users/${this._githubId}`
+    })
   }
   async findLatestApp(): Promise<App> {
     const releaseId = await this._getLatestReleaseID()

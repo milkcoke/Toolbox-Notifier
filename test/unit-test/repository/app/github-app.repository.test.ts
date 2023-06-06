@@ -9,7 +9,8 @@ describe('GithubAppRepository', ()=>{
   const githubAppRepository: IAppRepository = new GithubAppRepository(config)
 
   test('getDownloadAppInfo', async ()=>{
-    const latestApp = await githubAppRepository.findLatestApp()
-    console.dir(latestApp)
+    // TODO: Request get a higher rate limit
+    // const latestApp = await githubAppRepository.findLatestApp()
+    // console.dir(latestApp)
   })
 })
