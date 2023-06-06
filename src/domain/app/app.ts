@@ -12,4 +12,20 @@ export class App {
     this._operatingSystem = operatingSystem
     this._downloadCount = downloadCount
   }
+
+  get name(): string {
+    return this._name
+  }
+
+  get version(): string {
+    return this._version
+  }
+
+  get operatingSystem(): TOperatingSystem {
+    return this._operatingSystem
+  }
+
+  get downloadCount(): number {
+    return this._downloadCount
+  }
 }
