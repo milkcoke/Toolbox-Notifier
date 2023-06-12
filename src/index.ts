@@ -2,24 +2,22 @@ import 'reflect-metadata'
 import {APIGatewayEvent} from 'aws-lambda'
 import {SESv2Client} from '@aws-sdk/client-sesv2'
 import {container} from 'tsyringe'
-import {IGitHubHandler} from './repository/app/github-handler.interface'
-import {DefaultGitHubHandler} from './repository/app/github-handler'
-import {AwsSesNotifyRepository} from './repository/notify/aws-ses-notify.repository'
 import Config from '../config/config'
+import {IAppService} from './service/app/app.service.interface'
+import {INotifyService} from './service/notify/notify.service.interface'
 
 const config = container.resolve(Config)
-const sesClient = new SESv2Client({region: 'ap-northeast-2'})
+
 
 export async function handler (event: APIGatewayEvent): Promise<any> {
   try {
     if (event.requestContext['http'].method !== 'POST') throw new Error('Not valid headers')
 
-    const githubHandler: IGitHubHandler = new DefaultGitHubHandler(config)
-    const latestReleaseId = await githubHandler.getLatestReleaseID()
-    const response = await githubHandler.getNumOfDownload(latestReleaseId)
+    const appService = container.resolve<IAppService>('IAppService')
+    const notifyService = container.resolve<INotifyService>('INotifyService')
 
-    const awsSendEmail = new AwsSesNotifyRepository(sesClient, config)
-    await awsSendEmail.sendMsg(response)
+    const app = await appService.getAppInfo()
+    await notifyService.notify(app)
 
     return {
       'statusCode': 200,
