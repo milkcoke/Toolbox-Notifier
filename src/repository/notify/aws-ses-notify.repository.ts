@@ -1,7 +1,11 @@
 import {SESv2Client, SendEmailCommand} from '@aws-sdk/client-sesv2'
 import Config from '../../../config/config'
+import {INotifyRepository} from './notify.repository.interface'
+import {injectable, singleton} from 'tsyringe'
 
-export default class AwsSesHandler {
+@singleton()
+@injectable()
+export class AwsSesNotifyRepository implements INotifyRepository {
   private readonly _sesv2Client: SESv2Client
   private readonly _config: Config
 
@@ -10,7 +14,7 @@ export default class AwsSesHandler {
     this._config = config
   }
 
-  async sendEmail(message: any): Promise<any> {
+  async sendMsg(message: any): Promise<void> {
     const sendEmailCommand = new SendEmailCommand({
       FromEmailAddress: `${this._config.email}`,
       Destination: {
@@ -32,6 +36,6 @@ export default class AwsSesHandler {
       }
     })
 
-    return await this._sesv2Client.send(sendEmailCommand)
+    await this._sesv2Client.send(sendEmailCommand)
   }
 }

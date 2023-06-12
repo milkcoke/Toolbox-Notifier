@@ -4,7 +4,7 @@ import {SESv2Client} from '@aws-sdk/client-sesv2'
 import {container} from 'tsyringe'
 import {IGitHubHandler} from './repository/app/github-handler.interface'
 import {DefaultGitHubHandler} from './repository/app/github-handler'
-import AWSSESHandler from './repository/notify/aws-ses-handler'
+import {AwsSesNotifyRepository} from './repository/notify/aws-ses-notify.repository'
 import Config from '../config/config'
 
 const config = container.resolve(Config)
@@ -18,8 +18,8 @@ export async function handler (event: APIGatewayEvent): Promise<any> {
     const latestReleaseId = await githubHandler.getLatestReleaseID()
     const response = await githubHandler.getNumOfDownload(latestReleaseId)
 
-    const awsSendEmail = new AWSSESHandler(sesClient, config)
-    await awsSendEmail.sendEmail(response)
+    const awsSendEmail = new AwsSesNotifyRepository(sesClient, config)
+    await awsSendEmail.sendMsg(response)
 
     return {
       'statusCode': 200,
