@@ -1,3 +1,3 @@
 export interface INotifyRepository {
-  sendMsg(msg: any): Promise<void>
+  sendMsg(message: any): Promise<void>
 }

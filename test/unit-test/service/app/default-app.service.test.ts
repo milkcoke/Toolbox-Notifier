@@ -4,7 +4,7 @@ import {GithubAppRepository} from '../../../../src/repository/app/github-app.rep
 import {DefaultAppService} from '../../../../src/service/app/default-app.service'
 import {IAppService} from '../../../../src/service/app/app.service.interface'
 
-container.register('AppRepository', {
+container.register('IAppRepository', {
   useClass: GithubAppRepository
 })
 describe('DefaultAppService', ()=>{
