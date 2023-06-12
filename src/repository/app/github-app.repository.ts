@@ -1,4 +1,4 @@
-import {injectable, singleton} from 'tsyringe'
+import {singleton} from 'tsyringe'
 import {IAppRepository} from './app.repository.interface'
 import {App} from '../../domain/app/app'
 import {Octokit} from '@octokit/rest'
@@ -6,7 +6,6 @@ import Config from '../../../config/config'
 import {TAppReleaseInfo} from '../../types/app/appRelease'
 
 @singleton()
-@injectable()
 export class GithubAppRepository implements IAppRepository {
   private readonly _owner: string
   private readonly _repo: string

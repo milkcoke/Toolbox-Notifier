@@ -5,7 +5,6 @@ import {IAppRepository} from '../../repository/app/app.repository.interface'
 import {autoInjectable, inject, singleton} from 'tsyringe'
 
 @singleton()
-@autoInjectable()
 export class DefaultAppService implements IAppService {
   private readonly _appRepository : IAppRepository
   constructor(@inject('IAppRepository') appRepository: IAppRepository) {

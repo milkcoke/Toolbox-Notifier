@@ -4,7 +4,6 @@ import {INotifyRepository} from './notify.repository.interface'
 import {injectable, singleton} from 'tsyringe'
 
 @singleton()
-@injectable()
 export class AwsSesNotifyRepository implements INotifyRepository {
   private readonly _sesv2Client: SESv2Client
   private readonly _config: Config
