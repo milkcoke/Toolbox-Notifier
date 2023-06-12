@@ -1,5 +1,5 @@
 import {INotifyService} from './notify.service.interface'
-import {inject, injectable, singleton} from 'tsyringe'
+import {inject, singleton} from 'tsyringe'
 import {INotifyRepository} from '../../repository/notify/notify.repository.interface'
 
 @singleton()
