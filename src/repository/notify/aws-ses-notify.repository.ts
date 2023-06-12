@@ -1,7 +1,7 @@
 import {SESv2Client, SendEmailCommand} from '@aws-sdk/client-sesv2'
 import Config from '../../../config/config'
 import {INotifyRepository} from './notify.repository.interface'
-import {injectable, singleton} from 'tsyringe'
+import {singleton} from 'tsyringe'
 
 @singleton()
 export class AwsSesNotifyRepository implements INotifyRepository {

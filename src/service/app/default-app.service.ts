@@ -2,7 +2,7 @@ import {IAppService} from './app.service.interface'
 import {App} from '../../domain/app/app'
 import {TAppDiff} from '../../types/app/appDiff'
 import {IAppRepository} from '../../repository/app/app.repository.interface'
-import {autoInjectable, inject, singleton} from 'tsyringe'
+import {inject, singleton} from 'tsyringe'
 
 @singleton()
 export class DefaultAppService implements IAppService {
