@@ -1,9 +1,15 @@
+import 'reflect-metadata'
 import {singleton} from 'tsyringe'
+import * as process from 'process'
+import {Octokit} from '@octokit/rest'
+import dotenv from 'dotenv'
+import {join} from 'path'
 import {IAppRepository} from './app.repository.interface'
 import {App} from '../../domain/app/app'
-import {Octokit} from '@octokit/rest'
 import Config from '../../../config/config'
 import {TAppReleaseInfo} from '../../types/app/appRelease'
+
+dotenv.config({path: join(__dirname, '../../../.env')})
 
 @singleton()
 export class GithubAppRepository implements IAppRepository {
@@ -16,7 +22,9 @@ export class GithubAppRepository implements IAppRepository {
     this._repo = this._config.repo
     this._githubId = this._config['github-id']
     this._octokit = new Octokit({
-      baseUrl: `https://api.github.com/users/${this._githubId}`
+      auth: 'token ' + process.env.GITHUB_API_TOKEN,
+      baseUrl: `https://api.github.com/users/${this._githubId}`,
+      timeZone: 'Asia/Seoul'
     })
   }
   async findLatestApp(): Promise<App> {
