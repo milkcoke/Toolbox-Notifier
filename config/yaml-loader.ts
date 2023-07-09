@@ -33,13 +33,13 @@ export function getOriginalFromKeyWithTraversal(keyStr: string): any {
 
   let copyObj = loadedOriginalData[keys[0]]
   // 처음부터 애초에 존재하지 않는 키를 참조한 경우
-  if (copyObj === undefined || copyObj === null) {
+  if (copyObj === undefined) {
     throw new Error(`Invalid reference key : ${keyStr}`)
   }
   const restKeys = keys.slice(1)
 
   for (const key of restKeys) {
-    if (copyObj === undefined || copyObj === null) {
+    if (copyObj === undefined) {
       throw new Error(`Invalid reference key : ${keyStr}`)
     }
     copyObj = copyObj[key]
