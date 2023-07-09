@@ -1,0 +1,19 @@
+
+github:
+  id: milkcoke
+  email: mbh023@gmail.com
+  owner: milkcoke
+  repo: toolbox-gui
+  release_id: 1
+
+aws:
+  region: ap-northeast-2
+  account_id: 2038920198
+
+  s3:
+    region: ${aws.region}
+    account_id: ${aws.account_id}
+    bucket_name: toolbox-notifier
+    memos:
+      - 기모리
+      - 금모링당동
