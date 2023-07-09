@@ -17,3 +17,6 @@ aws:
     memos:
       - 기모리
       - 금모링당동
+
+  ses:
+    email: mbh023@gmail.com

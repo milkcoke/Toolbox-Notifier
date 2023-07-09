@@ -1,7 +1,7 @@
 import 'reflect-metadata'
 import {container, Lifecycle} from 'tsyringe'
 import {SESv2Client} from '@aws-sdk/client-sesv2'
-import Config from '../../config/config'
+import {SESConfig} from '../../config/aws/ses.config'
 import {INotifyRepository} from '../repository/notify/notify.repository.interface'
 
 export default async function () : Promise<void> {
@@ -21,7 +21,7 @@ export default async function () : Promise<void> {
   container.register('INotifyRepository', {
     useFactory: ()=> {
       const sesClient = new SESv2Client({region: 'ap-northeast-2'})
-      const config = container.resolve(Config)
-      return new AwsSesNotifyRepository(sesClient, config)
+      const sesConfig = container.resolve(SESConfig)
+      return new AwsSesNotifyRepository(sesClient, sesConfig)
     }})
 }

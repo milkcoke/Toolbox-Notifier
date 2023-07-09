@@ -3,7 +3,7 @@ import yamlLoader from '../yaml-loader'
 import {singleton} from 'tsyringe'
 
 @singleton()
-export default class S3Config {
+export class S3Config {
   private readonly _region: string
   private readonly _accountId: string
   private readonly _bucketName: string

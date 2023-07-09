@@ -1,13 +1,8 @@
 import 'reflect-metadata'
 import {APIGatewayEvent} from 'aws-lambda'
-import {SESv2Client} from '@aws-sdk/client-sesv2'
 import {container} from 'tsyringe'
-import Config from '../config/config'
 import {IAppService} from './service/app/app.service.interface'
 import {INotifyService} from './service/notify/notify.service.interface'
-
-const config = container.resolve(Config)
-
 
 export async function handler (event: APIGatewayEvent): Promise<any> {
   try {

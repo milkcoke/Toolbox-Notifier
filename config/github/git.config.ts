@@ -3,7 +3,7 @@ import {singleton} from 'tsyringe'
 import yamlLoader from '../yaml-loader'
 
 @singleton()
-export default class GitConfig {
+export class GitConfig {
   private readonly _id: string
   private readonly _email: string
   private readonly _owner: string

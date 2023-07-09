@@ -1,23 +1,23 @@
 import {SESv2Client, SendEmailCommand} from '@aws-sdk/client-sesv2'
-import Config from '../../../config/config'
+import {SESConfig} from '../../../config/aws/ses.config'
 import {INotifyRepository} from './notify.repository.interface'
 import {singleton} from 'tsyringe'
 
 @singleton()
 export class AwsSesNotifyRepository implements INotifyRepository {
   private readonly _sesv2Client: SESv2Client
-  private readonly _config: Config
+  private readonly _sesConfig: SESConfig
 
-  constructor(sesv2Client: SESv2Client, config: Config) {
+  constructor(sesv2Client: SESv2Client, sesConfig: SESConfig) {
     this._sesv2Client = sesv2Client
-    this._config = config
+    this._sesConfig = sesConfig
   }
 
   async sendMsg(message: any): Promise<void> {
     const sendEmailCommand = new SendEmailCommand({
-      FromEmailAddress: `${this._config.email}`,
+      FromEmailAddress: `${this._sesConfig.email}`,
       Destination: {
-        ToAddresses: [`${this._config.email}`]
+        ToAddresses: [`${this._sesConfig.email}`]
       },
       Content: {
         Simple: {

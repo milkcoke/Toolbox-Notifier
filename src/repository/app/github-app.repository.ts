@@ -6,7 +6,7 @@ import dotenv from 'dotenv'
 import {join} from 'path'
 import {IAppRepository} from './app.repository.interface'
 import {App} from '../../domain/app/app'
-import Config from '../../../config/config'
+import {GitConfig} from '../../../config/github/git.config'
 import {TAppReleaseInfo} from '../../types/app/appRelease'
 
 dotenv.config({path: join(__dirname, '../../../.env')})
@@ -17,10 +17,10 @@ export class GithubAppRepository implements IAppRepository {
   private readonly _repo: string
   private readonly _githubId: string
   private readonly _octokit: Octokit
-  constructor(private readonly _config: Config) {
-    this._owner = this._config.owner
-    this._repo = this._config.repo
-    this._githubId = this._config['github-id']
+  constructor(private readonly _gitConfig: GitConfig) {
+    this._owner = this._gitConfig.owner
+    this._repo = this._gitConfig.repo
+    this._githubId = this._gitConfig.id
     this._octokit = new Octokit({
       auth: 'token ' + process.env.GITHUB_API_TOKEN,
       baseUrl: `https://api.github.com/users/${this._githubId}`,

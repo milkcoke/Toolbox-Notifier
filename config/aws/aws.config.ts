@@ -1,9 +1,9 @@
-import S3Config from './s3.config'
+import {S3Config} from './s3.config'
 import {singleton} from 'tsyringe'
 import yamlLoader from '../yaml-loader'
 
 @singleton()
-export default class AwsConfig {
+export class AwsConfig {
   private readonly _region: string
   private readonly _accountId: string
   private readonly _s3Config: S3Config
