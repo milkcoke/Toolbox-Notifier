@@ -1,6 +1,6 @@
 import {S3Config} from './s3.config'
 import {singleton} from 'tsyringe'
-import yamlLoader from '../yaml-loader'
+import {YamlLoader} from '../yaml-loader'
 
 @singleton()
 export class AwsConfig {
@@ -8,7 +8,7 @@ export class AwsConfig {
   private readonly _accountId: string
   private readonly _s3Config: S3Config
   constructor(s3Config: S3Config) {
-    const config = yamlLoader()
+    const config = YamlLoader.getData()
     const awsConfig = config.aws
     this._s3Config = s3Config
     this._region = awsConfig.region

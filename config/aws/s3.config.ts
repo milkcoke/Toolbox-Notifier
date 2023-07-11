@@ -1,5 +1,5 @@
 import 'reflect-metadata'
-import yamlLoader from '../yaml-loader'
+import {YamlLoader} from '../yaml-loader'
 import {singleton} from 'tsyringe'
 
 @singleton()
@@ -10,7 +10,7 @@ export class S3Config {
   private readonly _memos: string[]
   constructor() {
     console.log('s3 initialized!')
-    const config = yamlLoader()
+    const config = YamlLoader.getData()
     const s3Config = config.aws.s3
     this._region = s3Config.region
     this._accountId = s3Config.account_id

@@ -1,6 +1,6 @@
 import 'reflect-metadata'
 import {singleton} from 'tsyringe'
-import yamlLoader from '../yaml-loader'
+import {YamlLoader} from '../yaml-loader'
 
 @singleton()
 export class GitConfig {
@@ -11,7 +11,7 @@ export class GitConfig {
   private readonly _releaseId: string
 
   constructor() {
-    const config = yamlLoader()
+    const config = YamlLoader.getData()
     const gitConfig = config.github
 
     this._id = gitConfig.id
