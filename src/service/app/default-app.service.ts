@@ -1,27 +1,42 @@
+import {inject, singleton} from 'tsyringe'
 import {IAppService} from './app.service.interface'
 import {App} from '../../domain/app/app'
+import {ICurrentAppRepository} from '../../repository/app/current-app.repository.interface'
+import {ILastAppRepository} from '../../repository/app/last-app.repository.interface'
 import {TAppDiff} from '../../types/app/appDiff'
-import {IAppRepository} from '../../repository/app/app.repository.interface'
-import {inject, singleton} from 'tsyringe'
 
 @singleton()
 export class DefaultAppService implements IAppService {
-  private readonly _appRepository : IAppRepository
-  constructor(@inject('IAppRepository') appRepository: IAppRepository) {
-    this._appRepository = appRepository
+  private readonly _currentAppRepository : ICurrentAppRepository
+  private readonly _lastAppRepository: ILastAppRepository
+  constructor(
+    @inject('ICurrentAppRepository') currentAppRepository: ICurrentAppRepository,
+    @inject('ILastAppRepository') lastAppRepository: ILastAppRepository
+  ) {
+    this._currentAppRepository = currentAppRepository
+    this._lastAppRepository = lastAppRepository
   }
-  async getAppInfo(): Promise<App> {
-    return await this._appRepository.findLatestApp()
+  async readCurrentAppsInfo(): Promise<App[]> {
+    // TODO: Implement
+    return Promise.resolve([])
   }
 
-  getDiffDownloadCount(prevApp: App, curApp: App): TAppDiff {
-    const diffDownloadCount = curApp.downloadCount - prevApp.downloadCount
+  async readLastAppsInfo(): Promise<App[]> {
+    // TODO: Implement
+    return Promise.resolve(undefined)
+  }
+
+
+  getDiffDownloadCount(prevApp: App[], curApp: App[]): TAppDiff {
+    // TODO: Implement
+    prevApp[0]
+    curApp[0]
 
     return {
-      appName: curApp.name,
-      version: curApp.version,
-      os: curApp.operatingSystem,
-      diffCount: diffDownloadCount
+      appName: 'Toolbox Dev',
+      version: '1.0.0',
+      os: 'Windows-x64',
+      diffCount: 0
     }
   }
 }

@@ -1,6 +1,5 @@
 import {default as init} from './initiator'
 import {container} from 'tsyringe'
-import {IAppService} from '../service/app/app.service.interface'
 import {INotifyService} from '../service/notify/notify.service.interface'
 
 (async (): Promise<void> =>{

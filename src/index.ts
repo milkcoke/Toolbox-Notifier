@@ -11,7 +11,7 @@ export async function handler (event: APIGatewayEvent): Promise<any> {
     const appService = container.resolve<IAppService>('IAppService')
     const notifyService = container.resolve<INotifyService>('INotifyService')
 
-    const app = await appService.getAppInfo()
+    const app = await appService.readCurrentAppsInfo()
     await notifyService.notify(app)
 
     return {
