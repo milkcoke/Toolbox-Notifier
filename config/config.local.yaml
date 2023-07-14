@@ -8,15 +8,10 @@ github:
 
 aws:
   region: ap-northeast-2
-  account_id: 2038920198
 
   s3:
     region: ${aws.region}
-    account_id: ${aws.account_id}
-    bucket_name: toolbox-notifier
-    memos:
-      - 기모리
-      - 금모링당동
+    bucket_name: toolbox-app-info
 
   ses:
     email: mbh023@gmail.com
