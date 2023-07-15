@@ -31,7 +31,7 @@ export class GithubCurrentAppRepository implements ICurrentAppRepository {
     return await this._getNumOfDownload(releaseId)
   }
 
-  private async _getCurrentVersion(): Promise<string> {
+  async getCurrentAppVersion(): Promise<string> {
     const latestRelease = await this._octokit.rest.repos.getLatestRelease({
       owner: this._gitConfig.owner,
       repo: this._gitConfig.repo
