@@ -1,7 +1,7 @@
-import {ILastAppRepository} from './last-app.repository.interface'
-import {TAppReleaseInfo} from '../../types/app/appInfo'
 import {GetObjectCommand, S3Client} from '@aws-sdk/client-s3'
 import {S3Config} from '../../../config/aws/s3.config'
+import {App} from '../../domain/app/app'
+import {ILastAppRepository} from './last-app.repository.interface'
 
 export class S3LastAppRepository implements ILastAppRepository {
   private readonly _s3Client: S3Client
@@ -11,16 +11,14 @@ export class S3LastAppRepository implements ILastAppRepository {
       region: this._s3Config.region
     })
   }
-  async getLatestApps(version: string): Promise<TAppReleaseInfo[]> {
+  async getLatestApps(version: string): Promise<App[]> {
     // TODO: Implement
     await this._s3Client.send(new GetObjectCommand({
       Bucket: this._s3Config.bucketName,
       Key: '/' + version
     }))
 
-    return [
-      {appName: 'Windows-x64', downloadCount: 50}
-    ]
+    return []
   }
 
 }

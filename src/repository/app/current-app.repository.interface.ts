@@ -1,6 +1,6 @@
-import {TAppReleaseInfo} from '../../types/app/appInfo'
+import {App} from '../../domain/app/app'
 
 export interface ICurrentAppRepository {
-  getCurrentApps(): Promise<TAppReleaseInfo[]>
+  getCurrentApps(): Promise<App[]>
   getCurrentAppVersion(): Promise<string>
 }

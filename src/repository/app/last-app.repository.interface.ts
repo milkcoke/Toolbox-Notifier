@@ -1,5 +1,5 @@
-import {TAppReleaseInfo} from '../../types/app/appInfo'
+import {App} from '../../domain/app/app'
 
 export interface ILastAppRepository {
-  getLatestApps(version: string): Promise<TAppReleaseInfo[]>
+  getLatestApps(version: string): Promise<App[]>
 }
