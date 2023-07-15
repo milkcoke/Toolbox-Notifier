@@ -7,8 +7,6 @@ import {join} from 'path'
 import {ICurrentAppRepository} from './current-app.repository.interface'
 import {GitConfig} from '../../../config/github/git.config'
 import {TAppReleaseInfo} from '../../types/app/appInfo'
-import {S3Config} from '../../../config/aws/s3.config'
-import {S3Client} from '@aws-sdk/client-s3'
 import {App} from '../../domain/app/app'
 
 dotenv.config({path: join(__dirname, '../../../.env')})
@@ -16,11 +14,8 @@ dotenv.config({path: join(__dirname, '../../../.env')})
 @singleton()
 export class GithubCurrentAppRepository implements ICurrentAppRepository {
   private readonly _octokit: Octokit
-  private readonly _s3Client = new S3Client({
-    region: this._s3Config.region
-  })
 
-  constructor(private readonly _gitConfig: GitConfig, private readonly _s3Config: S3Config) {
+  constructor(private readonly _gitConfig: GitConfig) {
     this._octokit = new Octokit({
       auth: process.env.GITHUB_API_TOKEN,
       timeZone: 'Asia/Seoul'
