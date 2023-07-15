@@ -1,5 +1,5 @@
-export type TAppReleaseInfo = {
-  appName: string
+export type TAppAssetInfo = {
+  assetName: string
   downloadCount: number
 }
 

@@ -1,6 +1,6 @@
-<mxfile modified="2023-07-15T13:21:33.323Z" host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.1 Chrome/112.0.5615.204 Electron/24.6.1 Safari/537.36" etag="2-C5F6AnjIOXJHGQcUJV" version="21.6.1" type="device" pages="3">
+<mxfile modified="2023-07-15T15:41:37.415Z" host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.1 Chrome/112.0.5615.204 Electron/24.6.1 Safari/537.36" etag="adls8br4AxBI8SsnpL_7" version="21.6.1" type="device" pages="3">
   <diagram id="V5F1QTCF67uWmOmuWjXn" name="Code Architecture">
-    <mxGraphModel dx="2284" dy="854" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -143,8 +143,8 @@
         <mxCell id="ao_ZREdeMbeQ6u7tW3N4-1" value="&lt;span&gt;Toolbox-Dev&lt;/span&gt;" style="outlineConnect=0;fontColor=#232F3E;gradientColor=#60A337;gradientDirection=north;fillColor=#277116;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=1;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.s3;labelBackgroundColor=#ffffff;fontFamily=AppleSDGothicNeoSB00;" parent="1" vertex="1">
           <mxGeometry x="512" y="336" width="78" height="78" as="geometry" />
         </mxCell>
-        <mxCell id="baAnYbiMdlhtTQm1JHAf-5" value="&lt;div&gt;&amp;nbsp; &amp;nbsp; [&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; { os: &#39;MacOS-arm64&#39;, downloadCount: 17 },&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; { os: &#39;Windows-x64&#39;, downloadCount: 50 },&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; ]&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=AppleSDGothicNeoR00;fontStyle=0;fontSize=16;" parent="1" vertex="1">
-          <mxGeometry x="647" y="346" width="340" height="90" as="geometry" />
+        <mxCell id="baAnYbiMdlhtTQm1JHAf-5" value="&lt;div&gt;&amp;nbsp; &amp;nbsp; [&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; { assetName: &#39;Toolbox-osx-arm64.dmg&#39;, downloadCount: 17 },&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; { assetName: &#39;Toolbox-Windows-x64.exe&#39;, downloadCount: 50 },&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; ]&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=AppleSDGothicNeoR00;fontStyle=0;fontSize=16;" parent="1" vertex="1">
+          <mxGeometry x="622" y="348" width="480" height="90" as="geometry" />
         </mxCell>
         <mxCell id="baAnYbiMdlhtTQm1JHAf-7" value="currentApp: current download count get from Octokit (Github API)&lt;br&gt;latestApp: latest download count on AWS S3" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=16;fontFamily=AppleSDGothicNeoR00;fontColor=default;" parent="1" vertex="1">
           <mxGeometry x="622" y="165" width="470" height="50" as="geometry" />
