@@ -1,4 +1,4 @@
-<mxfile modified="2023-07-15T09:57:59.526Z" host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.1 Chrome/112.0.5615.204 Electron/24.6.1 Safari/537.36" etag="_X76qMSyszL_xSJ9wyc-" version="21.6.1" type="device" pages="3">
+<mxfile modified="2023-07-15T13:21:33.323Z" host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.1 Chrome/112.0.5615.204 Electron/24.6.1 Safari/537.36" etag="2-C5F6AnjIOXJHGQcUJV" version="21.6.1" type="device" pages="3">
   <diagram id="V5F1QTCF67uWmOmuWjXn" name="Code Architecture">
     <mxGraphModel dx="2284" dy="854" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -65,7 +65,7 @@
         <mxCell id="i_XG2XcH5vGM6KhUruf7-41" value="&lt;font color=&quot;#009900&quot; style=&quot;font-size: 13px;&quot;&gt;&amp;lt;&amp;lt;node.service&amp;gt;&amp;gt;&lt;/font&gt;&lt;br style=&quot;font-size: 13px;&quot;&gt;NotifyService" style="rounded=0;whiteSpace=wrap;html=1;horizontal=1;fontFamily=AppleSDGothicNeoM00;fontStyle=0;fontSize=13;" parent="1" vertex="1">
           <mxGeometry x="120.5" y="1177" width="240" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="Ld-UYoG-Gp-7qgM8Msgs-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;fontFamily=AppleSDGothicNeoM00;fontSize=13;" edge="1" parent="1" source="i_XG2XcH5vGM6KhUruf7-43" target="Ld-UYoG-Gp-7qgM8Msgs-1">
+        <mxCell id="Ld-UYoG-Gp-7qgM8Msgs-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;fontFamily=AppleSDGothicNeoM00;fontSize=13;" parent="1" source="i_XG2XcH5vGM6KhUruf7-43" target="Ld-UYoG-Gp-7qgM8Msgs-1" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="i_XG2XcH5vGM6KhUruf7-43" value="&lt;font color=&quot;#009900&quot; style=&quot;font-size: 13px;&quot;&gt;&amp;lt;&amp;lt;node.service&amp;gt;&amp;gt;&lt;/font&gt;&lt;br style=&quot;font-size: 13px;&quot;&gt;AppService" style="rounded=0;whiteSpace=wrap;html=1;horizontal=1;fontFamily=AppleSDGothicNeoM00;fontStyle=0;fontSize=13;" parent="1" vertex="1">
@@ -110,26 +110,26 @@
         <mxCell id="x0uATytaiNgE6B8KKbgc-1" value="Last Package Info&lt;br style=&quot;font-size: 13px;&quot;&gt;(AWS S3)" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=AppleSDGothicNeoM00;fontSize=13;" parent="1" vertex="1">
           <mxGeometry x="1050" y="1112" width="210" height="38" as="geometry" />
         </mxCell>
-        <mxCell id="x0uATytaiNgE6B8KKbgc-2" value="" style="endArrow=classic;html=1;rounded=0;fontFamily=AppleSDGothicNeoM00;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1.038;exitY=0.482;exitDx=0;exitDy=0;strokeWidth=2;exitPerimeter=0;fontSize=13;" parent="1" edge="1" target="x0uATytaiNgE6B8KKbgc-1" source="i_XG2XcH5vGM6KhUruf7-15">
+        <mxCell id="x0uATytaiNgE6B8KKbgc-2" value="" style="endArrow=classic;html=1;rounded=0;fontFamily=AppleSDGothicNeoM00;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1.038;exitY=0.482;exitDx=0;exitDy=0;strokeWidth=2;exitPerimeter=0;fontSize=13;" parent="1" source="i_XG2XcH5vGM6KhUruf7-15" target="x0uATytaiNgE6B8KKbgc-1" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="921.04" y="1071.88" as="sourcePoint" />
             <mxPoint x="1050" y="1072" as="targetPoint" />
             <Array as="points" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="Ld-UYoG-Gp-7qgM8Msgs-4" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=-0.025;entryY=0.477;entryDx=0;entryDy=0;entryPerimeter=0;labelBackgroundColor=default;strokeColor=default;strokeWidth=2;fontFamily=AppleSDGothicNeoM00;fontSize=13;fontColor=default;endArrow=classic;" edge="1" parent="1" source="Ld-UYoG-Gp-7qgM8Msgs-1" target="i_XG2XcH5vGM6KhUruf7-15">
+        <mxCell id="Ld-UYoG-Gp-7qgM8Msgs-4" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=-0.025;entryY=0.477;entryDx=0;entryDy=0;entryPerimeter=0;labelBackgroundColor=default;strokeColor=default;strokeWidth=2;fontFamily=AppleSDGothicNeoM00;fontSize=13;fontColor=default;endArrow=classic;" parent="1" source="Ld-UYoG-Gp-7qgM8Msgs-1" target="i_XG2XcH5vGM6KhUruf7-15" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Ld-UYoG-Gp-7qgM8Msgs-1" value="&lt;font color=&quot;#009900&quot; style=&quot;font-size: 13px;&quot;&gt;&amp;lt;&amp;lt;node.repository&amp;gt;&amp;gt;&lt;/font&gt;&lt;br style=&quot;font-size: 13px;&quot;&gt;LastAppRepository" style="rounded=0;whiteSpace=wrap;html=1;horizontal=1;fontFamily=AppleSDGothicNeoM00;fontStyle=0;fontSize=13;" vertex="1" parent="1">
+        <mxCell id="Ld-UYoG-Gp-7qgM8Msgs-1" value="&lt;font color=&quot;#009900&quot; style=&quot;font-size: 13px;&quot;&gt;&amp;lt;&amp;lt;node.repository&amp;gt;&amp;gt;&lt;/font&gt;&lt;br style=&quot;font-size: 13px;&quot;&gt;LastAppRepository" style="rounded=0;whiteSpace=wrap;html=1;horizontal=1;fontFamily=AppleSDGothicNeoM00;fontStyle=0;fontSize=13;" parent="1" vertex="1">
           <mxGeometry x="499" y="1110" width="240" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="Ld-UYoG-Gp-7qgM8Msgs-5" value="" style="endArrow=classic;html=1;rounded=0;fontFamily=AppleSDGothicNeoM00;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;fontSize=13;" edge="1" parent="1" target="i_XG2XcH5vGM6KhUruf7-36">
+        <mxCell id="Ld-UYoG-Gp-7qgM8Msgs-5" value="" style="endArrow=classic;html=1;rounded=0;fontFamily=AppleSDGothicNeoM00;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;fontSize=13;" parent="1" target="i_XG2XcH5vGM6KhUruf7-36" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="920" y="1072" as="sourcePoint" />
             <mxPoint x="847" y="1082" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="lyhL1G_pw1GWadJ4X2mx-1" value="Notify Service가 Message 를 만들어야하고&lt;br&gt;이 때 앱 정보를 받아와야함.&lt;br&gt;당연&amp;nbsp; handler 에서 AppService 로부터 받은 Message를&lt;br&gt;Notify Service 로 넘겨주면됨,." style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=13;fontFamily=AppleSDGothicNeoM00;fontColor=default;" vertex="1" parent="1">
+        <mxCell id="lyhL1G_pw1GWadJ4X2mx-1" value="Notify Service가 Message 를 만들어야하고&lt;br&gt;이 때 앱 정보를 받아와야함.&lt;br&gt;당연&amp;nbsp; handler 에서 AppService 로부터 받은 Message를&lt;br&gt;Notify Service 로 넘겨주면됨,." style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=13;fontFamily=AppleSDGothicNeoM00;fontColor=default;" parent="1" vertex="1">
           <mxGeometry x="80" y="1388" width="310" height="80" as="geometry" />
         </mxCell>
       </root>

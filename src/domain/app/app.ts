@@ -1,15 +1,11 @@
-import {TOperatingSystem} from '../../constant/operatingSystem'
-
 export class App {
   private readonly _name: string
   private readonly _version: string
-  private readonly _operatingSystem: TOperatingSystem
   private readonly _downloadCount: number
 
-  constructor(name: string, version: string, operatingSystem: TOperatingSystem, downloadCount) {
+  constructor(name: string, version: string, downloadCount: number) {
     this._name = name
     this._version = version
-    this._operatingSystem = operatingSystem
     this._downloadCount = downloadCount
   }
 
@@ -19,10 +15,6 @@ export class App {
 
   get version(): string {
     return this._version
-  }
-
-  get operatingSystem(): TOperatingSystem {
-    return this._operatingSystem
   }
 
   get downloadCount(): number {

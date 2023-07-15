@@ -35,7 +35,6 @@ export class DefaultAppService implements IAppService {
     return {
       appName: 'Toolbox Dev',
       version: '1.0.0',
-      os: 'Windows-x64',
       diffCount: 0
     }
   }
