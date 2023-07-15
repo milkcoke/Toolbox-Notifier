@@ -6,7 +6,7 @@ import dotenv from 'dotenv'
 import {join} from 'path'
 import {ICurrentAppRepository} from './current-app.repository.interface'
 import {GitConfig} from '../../../config/github/git.config'
-import {TAppReleaseInfo} from '../../types/app/appInfo'
+import {TAppAssetInfo} from '../../types/app/appInfo'
 import {App} from '../../domain/app/app'
 
 dotenv.config({path: join(__dirname, '../../../.env')})
@@ -27,7 +27,7 @@ export class GithubCurrentAppRepository implements ICurrentAppRepository {
     const appsInfo = await this._getNumOfDownload(releaseId)
 
     return appsInfo.map(appInfo=>{
-      return new App(appInfo.appName, currentVersion, appInfo.downloadCount)
+      return new App(appInfo.assetName, currentVersion, appInfo.downloadCount)
     })
   }
 
@@ -47,7 +47,7 @@ export class GithubCurrentAppRepository implements ICurrentAppRepository {
     return latestRelease.data.id
   }
 
-  private async _getNumOfDownload(releaseId: number): Promise<TAppReleaseInfo[]> {
+  private async _getNumOfDownload(releaseId: number): Promise<TAppAssetInfo[]> {
 
     const response = await this._octokit.rest.repos.getRelease({
       owner: this._gitConfig.owner,
@@ -57,7 +57,7 @@ export class GithubCurrentAppRepository implements ICurrentAppRepository {
 
     return response.data.assets.map(asset=>{
       return {
-        appName: asset.name,
+        assetName: asset.name,
         downloadCount: asset.download_count
       }
     })
